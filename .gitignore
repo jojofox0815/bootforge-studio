@@ -17,6 +17,8 @@
 /.next/
 /out/
 /.vinext/
+/desktop/dist/
+/src-tauri/target/
 
 # misc
 .DS_Store
@@ -36,6 +38,7 @@ yarn-error.log*
 
 # typescript
 next-env.d.ts
+*.tsbuildinfo
 /dist/
 /.wrangler/
 /.sites-runtime/

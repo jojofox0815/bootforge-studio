@@ -37,6 +37,13 @@ Die Desktop-Hülle benötigt zusätzlich Rust, Tauri-Systemabhängigkeiten und d
 npm run tauri dev
 ```
 
+Eine portable Windows-x64-EXE wird automatisch über den Workflow
+`Build portable Windows executable` erzeugt. Das Artefakt liegt anschließend im
+jeweiligen GitHub-Actions-Lauf. Für eine vertrauenswürdige Authenticode-Signatur
+müssen die Repository-Secrets `WINDOWS_CERTIFICATE` (PFX als Base64) und
+`WINDOWS_CERTIFICATE_PASSWORD` gesetzt sein. Ohne diese Secrets wird das Artefakt
+eindeutig als `unsigned` veröffentlicht; es wird nicht irreführend selbstsigniert.
+
 ## Modulgrenzen
 
 Geschäftslogik lebt in `src/core`, Beispieldaten in `src/data`, die UI in `components`, die spätere privilegierte Desktop-Laufzeit in `src-tauri`. OS-Regeln werden nicht im Frontend hart codiert; die UI rendert Fähigkeiten und Validierungsergebnisse der Kernmodule.

@@ -4,12 +4,34 @@
   "version": "0.1.0",
   "identifier": "studio.bootforge.app",
   "build": {
-    "beforeDevCommand": "npm run dev",
-    "devUrl": "http://localhost:3000",
-    "frontendDist": "../dist/client"
+    "beforeDevCommand": "npm run desktop:dev",
+    "devUrl": "http://127.0.0.1:1420",
+    "beforeBuildCommand": "npm run desktop:build",
+    "frontendDist": "../desktop/dist"
   },
   "app": {
-    "windows": [{ "title": "BootForge Studio", "width": 1440, "height": 900, "minWidth": 900, "minHeight": 640 }],
-    "security": { "csp": "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'" }
+    "windows": [
+      {
+        "label": "main",
+        "title": "BootForge Studio",
+        "width": 1440,
+        "height": 900,
+        "minWidth": 900,
+        "minHeight": 640,
+        "center": true,
+        "resizable": true
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; img-src 'self' data:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self'"
+    }
+  },
+  "bundle": {
+    "active": false,
+    "targets": "all",
+    "windows": {
+      "digestAlgorithm": "sha256",
+      "timestampUrl": "http://timestamp.digicert.com"
+    }
   }
 }
